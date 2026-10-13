@@ -16,7 +16,13 @@ RAW = os.path.join(os.path.dirname(REPO), "_raw", "ug")
 YEARS = range(2005, 2027)
 
 
+CONST_ARCHIVED = ("https://web.archive.org/web/20211127060552id_/https://www.parliament.go.ug/cmis/views/"
+                  "e138fbaf-95f5-4cbc-ac33-b4678be3577a%253B1.0")
+
+
 def main():
+    # Constitution: the Parliament's document is no longer served; Internet Archive copy of the official file
+    T.fetch(CONST_ARCHIVED, os.path.join(RAW, "pdf", "constitution.pdf"), delay=3, check_pdf=True)
     acts = []
     for y in YEARS:
         p = os.path.join(RAW, "list", "%d.html" % y)
